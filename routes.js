@@ -258,6 +258,8 @@ router.delete("/courses/:id", authenticateUser, asyncHandler(async(req,res, next
     if(course) {
         await course.destroy();
         res.status(204).end();
+    } else {
+        res.status(404).json({message: "Course not found."});
     }
 }));
 
